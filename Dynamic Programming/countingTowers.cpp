@@ -5,12 +5,15 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n, m;
-    cin >> n >> m;
+    int t;
+    cin >> t;
 
-    vector<int> x(n);
-    for(auto &i:x) cin >> i;
+    while(t--) {
+        int n;
+        cin >> n;
 
-    int mod=1e9+7;
-    
+        
+    }
+
+    // return 1;
 }

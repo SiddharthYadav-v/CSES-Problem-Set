@@ -5,37 +5,20 @@ int main() {
     int n;
     cin >> n;
 
-    vector<int> freq(10, 0);
-    int tmp=n;
-    while(tmp>0) {
-        freq[tmp%10]++;
-        tmp/=10;
+    int mod=1e9+7;
+    vector<int> dp(1e6+1, INT_MAX);
+
+    dp[0]=0;
+    for(int i=1; i<10; i++) dp[i]=1;
+    for(int i=10; i<=n; i++) {
+        int tmp=i;
+        while(tmp>0) {
+            if(tmp%10!=0) dp[i]=min(dp[i], 1+dp[i-tmp%10]);
+            tmp/=10;
+        }
     }
 
-    vector<int> dp(n+1, INT_MAX);
-    function<int(int)> calculateDP=[&](int x)->int {
-        if(x==0) return 0;
+    cout << dp[n] << "\n";
 
-        if(dp[x]!=INT_MAX) return dp[x];
-
-        for(int i=1; i<10; i++) {
-            if(freq[i]>0) {
-                int tmp=x-i;
-                vector<int> newFreq(10, 0);
-                while(tmp>0) {
-                    newFreq[tmp%10]++;
-                    tmp/=10;
-                }
-
-                int res=calculateDP(tmp);
-                if(res!=INT_MAX) dp[x]=min(dp[x], res+1);
-            }
-        }
-
-        return dp[x];
-    };
-
-    cout << calculateDP(n) << "\n";
-
-    // return 1;
+    // return 1
 }
