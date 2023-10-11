@@ -8,6 +8,8 @@ int main() {
     vector<int> p(n);
     for(int i=0; i<n; i++) cin >> p[i];
 
+    sort(p.begin(), p.end());
+
     int cnt=n, sum=0, c=0;
     int i=0, j=n-1;
     while(i<j) {
