@@ -1,3 +1,6 @@
 *.exe
 *.stackdump
 test.cpp
+*.py
+segmentTree.cpp
+skipSort.cpp
